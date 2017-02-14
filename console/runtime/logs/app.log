@@ -1,0 +1,110 @@
+2017-02-10 20:51:49 [-][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'user' already exists' in F:\wzf20170209\cms\vendor\yiisoft\yii2\db\Command.php:781
+Stack trace:
+#0 F:\wzf20170209\cms\vendor\yiisoft\yii2\db\Command.php(781): PDOStatement->execute()
+#1 F:\wzf20170209\cms\vendor\yiisoft\yii2\db\Migration.php(260): yii\db\Command->execute()
+#2 F:\wzf20170209\cms\console\migrations\m130524_201442_init.php(27): yii\db\Migration->createTable('{{%user}}', Array, 'CHARACTER SET u...')
+#3 F:\wzf20170209\cms\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(492): m130524_201442_init->up()
+#4 F:\wzf20170209\cms\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(129): yii\console\controllers\BaseMigrateController->migrateUp('m130524_201442_...')
+#5 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#6 F:\wzf20170209\cms\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#7 F:\wzf20170209\cms\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#8 F:\wzf20170209\cms\vendor\yiisoft\yii2\console\Controller.php(91): yii\base\Controller->runAction('', Array)
+#9 F:\wzf20170209\cms\vendor\yiisoft\yii2\base\Module.php(455): yii\console\Controller->runAction('', Array)
+#10 F:\wzf20170209\cms\vendor\yiisoft\yii2\console\Application.php(167): yii\base\Module->runAction('migrate', Array)
+#11 F:\wzf20170209\cms\vendor\yiisoft\yii2\console\Application.php(143): yii\console\Application->runAction('migrate', Array)
+#12 F:\wzf20170209\cms\vendor\yiisoft\yii2\base\Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 F:\wzf20170209\cms\yii(27): yii\base\Application->run()
+#14 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'user' already exists
+The SQL being executed was: CREATE TABLE `user` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`username` varchar(255) NOT NULL UNIQUE,
+	`auth_key` varchar(32) NOT NULL,
+	`password_hash` varchar(255) NOT NULL,
+	`password_reset_token` varchar(255) UNIQUE,
+	`email` varchar(255) NOT NULL UNIQUE,
+	`status` smallint(6) NOT NULL DEFAULT 10,
+	`created_at` int(11) NOT NULL,
+	`updated_at` int(11) NOT NULL
+) CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB' in F:\wzf20170209\cms\vendor\yiisoft\yii2\db\Schema.php:628
+Stack trace:
+#0 F:\wzf20170209\cms\vendor\yiisoft\yii2\db\Command.php(791): yii\db\Schema->convertException(Object(PDOException), 'CREATE TABLE `u...')
+#1 F:\wzf20170209\cms\vendor\yiisoft\yii2\db\Migration.php(260): yii\db\Command->execute()
+#2 F:\wzf20170209\cms\console\migrations\m130524_201442_init.php(27): yii\db\Migration->createTable('{{%user}}', Array, 'CHARACTER SET u...')
+#3 F:\wzf20170209\cms\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(492): m130524_201442_init->up()
+#4 F:\wzf20170209\cms\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(129): yii\console\controllers\BaseMigrateController->migrateUp('m130524_201442_...')
+#5 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#6 F:\wzf20170209\cms\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#7 F:\wzf20170209\cms\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#8 F:\wzf20170209\cms\vendor\yiisoft\yii2\console\Controller.php(91): yii\base\Controller->runAction('', Array)
+#9 F:\wzf20170209\cms\vendor\yiisoft\yii2\base\Module.php(455): yii\console\Controller->runAction('', Array)
+#10 F:\wzf20170209\cms\vendor\yiisoft\yii2\console\Application.php(167): yii\base\Module->runAction('migrate', Array)
+#11 F:\wzf20170209\cms\vendor\yiisoft\yii2\console\Application.php(143): yii\console\Application->runAction('migrate', Array)
+#12 F:\wzf20170209\cms\vendor\yiisoft\yii2\base\Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 F:\wzf20170209\cms\yii(27): yii\base\Application->run()
+#14 {main}
+Additional Information:
+Array
+(
+    [0] => 42S01
+    [1] => 1050
+    [2] => Table 'user' already exists
+)
+
+2017-02-10 20:51:45 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\ÍõÔó·É\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-3HJBJ4A'
+    'ComSpec' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'FPS_BROWSER_APP_PROFILE_STRING' => 'Internet Explorer'
+    'FPS_BROWSER_USER_PROFILE_STRING' => 'Default'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ÍõÔó·É'
+    'LOCALAPPDATA' => 'C:\\Users\\ÍõÔó·É\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-3HJBJ4A'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OneDrive' => 'C:\\Users\\ÍõÔó·É\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\lamp\\SVN\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;F:\\Program Files\\Git\\cmd;D:\\wamp\\mysql\\bin;C:\\Users\\ÍõÔó·É\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PHP_COMMAND' => 'D:wamp/php/php55n/php.exe'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'TEMP' => 'C:\\Users\\ÍõÔó·É\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\ÍõÔó·É\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-3HJBJ4A'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-3HJBJ4A'
+    'USERNAME' => 'ÍõÔó·É'
+    'USERPROFILE' => 'C:\\Users\\ÍõÔó·É'
+    'windir' => 'C:\\WINDOWS'
+    'YII_PATH' => 'F:\\wzf20170209\\cms\\'
+    'PHP_SELF' => 'F:\\wzf20170209\\cms\\yii'
+    'SCRIPT_NAME' => 'F:\\wzf20170209\\cms\\yii'
+    'SCRIPT_FILENAME' => 'F:\\wzf20170209\\cms\\yii'
+    'PATH_TRANSLATED' => 'F:\\wzf20170209\\cms\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1486731105.0653
+    'REQUEST_TIME' => 1486731105
+    'argv' => [
+        0 => 'F:\\wzf20170209\\cms\\yii'
+        1 => 'migrate'
+    ]
+    'argc' => 2
+]
