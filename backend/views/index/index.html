@@ -1,8 +1,5 @@
 <?php
-
-
 use yii\helpers\Url;
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,7 +19,7 @@ use yii\helpers\Url;
 				<p class="admin-name"><?=$uname?>管理员 您好！</p>
 				<div class="public-header-fun fr">
 					<a href="" class="public-header-man">管理</a>
-					<a href="<?=Url::to(['index/logout'])?>" class="public-header-man">安全退出</a>	
+					<a href="" class="public-header-loginout">安全退出</a>	
 				</div>
 			</div>
 		</div>
@@ -33,19 +30,6 @@ use yii\helpers\Url;
 <div class="public-ifame mt20">
 	<div class="content">
 	<!-- 内容模块头 -->
-		<div class="public-ifame-header">
-			<ul>
-				<li class="ifame-item logo">
-					<div class="item-warrp">
-						<a href="#"><i>LOGO</i>
-							<h3 class="logo-title">WorldVentures梦幻之旅</h3>
-						</a>
-					</div>
-				</li>
-				<li class="ifame-item"><div class="item-warrp" style="border:none"><span>网站浏览量：15451</span></div></li>
-				<div class="clearfix"></div>
-			</ul>
-		</div>
 		<div class="clearfix"></div>
 		<!-- 左侧导航栏 -->
 		<div class="public-ifame-leftnav">
@@ -59,9 +43,9 @@ use yii\helpers\Url;
 					<a href="javascript:;">系统管理</a>
 					<div class="ifame-item-sub">
 						<ul>
-							<li class="active"><a href="javascript:;" target="content">网站配置</a></li>
+							<li class="active"><a href="<?=Url::to(['system/config'])?>" target="content">网站配置</a></li>
 							<li><a href="<?=Url::to(['system/safe'])?>" target="content">安全设置</a></li>
-							<li><a href="" target="content">分类管理</a></li>
+							<li><a href="<?=Url::to(['system/type'])?>" target="content">分类管理</a></li>
 							<li><a href="javascript:;" target="content">热门关键词</a></li>
 							<li><a href="javascript:;" target="content">会员日志</a></li>
 							<li><a href="javascript:;" target="content">网站管理员</a></li>

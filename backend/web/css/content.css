@@ -162,13 +162,13 @@ body{background: #fff;}
 }
 .public-content .public-content-cont td{
 	height:38px;
-	border-right: 1px solid #ccc;
+	border: 1px solid #ccc;
 }
 .public-content .public-content-cont .table-fun a{
 	display: inline-block;
-	width:40px;
-	height: 24px;
-	line-height: 24px;
+	width:100px;
+	height: 30px;
+	line-height:30px;
 	padding: 3px;
 	border: 1px solid #ddd;
 	border-radius: 5px;
@@ -178,6 +178,8 @@ body{background: #fff;}
 	height: 50px;
 	margin:10px;
 }
+
+
 .public-content .page{
 	text-align: center;
 	height: 34px;

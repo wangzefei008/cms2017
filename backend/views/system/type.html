@@ -96,7 +96,7 @@ use yii\helpers\Url;
 							<td><?=$v['category_order']?></td>						
 							<td>
 								<div class="table-fun">
-									<a href="<?=Url::to(['system/add_top','parentid'=>$v['id'],'type'=>2])?>">添加子分类</a>
+									<a href="<?=Url::to(['system/add_top','parentid'=>$v['id'],'type'=>2])?>" style="width:80px;">添加子分类</a>
 									<a href="<?=Url::to(['system/update_top','id'=>$v['id'],'type'=>2])?>">修改</a>
 									<a href="javascript:;" class="del">删除</a>
 								</div>
