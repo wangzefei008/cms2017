@@ -78,9 +78,8 @@ class SystemController extends MyController
 	//网站配置
 	public function actionConfig()
 	{
-		$model = new UploadForm();
 		$result=Config::find()->where(['id'=>1])->asArray()->one();
-		return $this->renderpartial('config.html',['result'=>$result,'model'=>$model]);
+		return $this->renderpartial('config.html',['result'=>$result]);
 	}
 	//网站配置修改
 	public function actionConfig_do()
