@@ -1,0 +1,38 @@
+<?php
+use yii\helpers\Url;
+?>
+<div class="toptip">
+	<h2>提示：</h2>
+	<p>
+多个关键字请用 “|” 隔开。<br />
+
+</p>
+</div>
+
+<div class="toptit">垃圾信息过滤</div>
+<form action="<?=Url::to(['system/filter'])?>" method="post"  name="form1" id="form1">
+<input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
+	  <table width="700" border="0" cellspacing="10" cellpadding="1"  >
+        <tr>
+          <td width="162" align="right" valign="top" style="padding:3px;">垃圾信息关键字<br />
+            (请用“|”隔开关键字)</td>
+          <td valign="top"><textarea name="filter" class="input_text_400" id="filter" style="height:100px;"></textarea></td>
+        </tr>
+        <tr>
+
+          <td align="right">出错提示</td>
+          <td><input name="filter_tips" type="text"  class="input_text_400" id="filter_tips" value="" maxlength="150"/></td>
+        </tr>
+        <tr>
+          <td align="right">&nbsp;</td>
+          <td><span style="font-size:14px;">
+            <input type="submit" class="admin_submit"    value="保存修改"/>
+          </span></td>
+        </tr>
+      </table>
+	    </form>
+  
+
+</div>
+</body>
+</html>
