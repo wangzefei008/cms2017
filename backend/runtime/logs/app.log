@@ -14888,3 +14888,186 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1487227810.796
     'REQUEST_TIME' => 1487227810
 ]
+2017-02-16 07:54:58 [192.168.1.29][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'app\models\UploadForm' not found' in D:\xampp\htdocs\nine\cms2017\backend\controllers\SystemController.php:81
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-02-16 07:54:58 [192.168.1.29][-][-][info][application] $_GET = [
+    'r' => 'system/config'
+]
+
+$_COOKIE = [
+    'video_cookie' => 'a'
+    'cn_9a154edda337ag57c050_dplus' => '{\"distinct_id\": \"15a07cf39012a1-082d4152ce2c358-44504130-100200-15a07cf3902157\",\"来源渠道\": \"\",\"$_sessionid\": 0,\"$_sessionTime\": 1486189984,\"initial_view_time\": \"1486188061\",\"initial_referrer\": \"http://localhost/seven/winter/\",\"initial_referrer_domain\": \"localhost\",\"$dp\": 0,\"$_sessionPVTime\": 1486189984}'
+    'CNZZDATA1255169715' => '968281248-1486188061-http%3A%2F%2Flocalhost%2F|1486188061'
+    '_csrf' => 'bd2f7da02751c543dab4704302c68169cf1272d68b8205084867920b84288348a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Bccn6bLX-OV_zUDfZda8mqfuX3DNMniG\";}'
+    'PHPSESSID' => '7u20t6uthk95lqmathj0qde4p3'
+]
+
+$_SERVER = [
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/nine/cms2017/backend/web/index.php?r=index/in'
+    'HTTP_COOKIE' => 'video_cookie=a; cn_9a154edda337ag57c050_dplus=%7B%22distinct_id%22%3A%20%2215a07cf39012a1-082d4152ce2c358-44504130-100200-15a07cf3902157%22%2C%22%E6%9D%A5%E6%BA%90%E6%B8%A0%E9%81%93%22%3A%20%22%22%2C%22%24_sessionid%22%3A%200%2C%22%24_sessionTime%22%3A%201486189984%2C%22initial_view_time%22%3A%20%221486188061%22%2C%22initial_referrer%22%3A%20%22http%3A%2F%2Flocalhost%2Fseven%2Fwinter%2F%22%2C%22initial_referrer_domain%22%3A%20%22localhost%22%2C%22%24dp%22%3A%200%2C%22%24_sessionPVTime%22%3A%201486189984%7D; CNZZDATA1255169715=968281248-1486188061-http%253A%252F%252Flocalhost%252F%7C1486188061; _csrf=bd2f7da02751c543dab4704302c68169cf1272d68b8205084867920b84288348a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Bccn6bLX-OV_zUDfZda8mqfuX3DNMniG%22%3B%7D; PHPSESSID=7u20t6uthk95lqmathj0qde4p3'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Lenovo\\Lenovo Home\\;C:\\Program Files\\TortoiseSVN\\bin;D:\\Git\\cmd;C:\\Program Files (x86)\\Lenovo\\Lenovo Home\\DCMainWin.exe'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.4 (Win32) OpenSSL/1.0.1e PHP/5.5.1 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.4 (Win32) OpenSSL/1.0.1e PHP/5.5.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '192.168.1.29'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.1.29'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'SERVER_ADMIN' => 'webmaster@dummy-host2.example.com'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/nine/cms2017/backend/web/index.php'
+    'REMOTE_PORT' => '52777'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=system/config'
+    'REQUEST_URI' => '/nine/cms2017/backend/web/index.php?r=system/config'
+    'SCRIPT_NAME' => '/nine/cms2017/backend/web/index.php'
+    'PHP_SELF' => '/nine/cms2017/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1487228098.045
+    'REQUEST_TIME' => 1487228098
+]
+2017-02-16 07:55:49 [192.168.1.29][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'app\models\UploadForm' not found' in D:\xampp\htdocs\nine\cms2017\backend\controllers\SystemController.php:81
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-02-16 07:55:49 [192.168.1.29][-][-][info][application] $_GET = [
+    'r' => 'system/config'
+]
+
+$_COOKIE = [
+    'video_cookie' => 'a'
+    'cn_9a154edda337ag57c050_dplus' => '{\"distinct_id\": \"15a07cf39012a1-082d4152ce2c358-44504130-100200-15a07cf3902157\",\"来源渠道\": \"\",\"$_sessionid\": 0,\"$_sessionTime\": 1486189984,\"initial_view_time\": \"1486188061\",\"initial_referrer\": \"http://localhost/seven/winter/\",\"initial_referrer_domain\": \"localhost\",\"$dp\": 0,\"$_sessionPVTime\": 1486189984}'
+    'CNZZDATA1255169715' => '968281248-1486188061-http%3A%2F%2Flocalhost%2F|1486188061'
+    '_csrf' => 'bd2f7da02751c543dab4704302c68169cf1272d68b8205084867920b84288348a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Bccn6bLX-OV_zUDfZda8mqfuX3DNMniG\";}'
+    'PHPSESSID' => '7u20t6uthk95lqmathj0qde4p3'
+]
+
+$_SERVER = [
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/nine/cms2017/backend/web/index.php?r=index/in'
+    'HTTP_COOKIE' => 'video_cookie=a; cn_9a154edda337ag57c050_dplus=%7B%22distinct_id%22%3A%20%2215a07cf39012a1-082d4152ce2c358-44504130-100200-15a07cf3902157%22%2C%22%E6%9D%A5%E6%BA%90%E6%B8%A0%E9%81%93%22%3A%20%22%22%2C%22%24_sessionid%22%3A%200%2C%22%24_sessionTime%22%3A%201486189984%2C%22initial_view_time%22%3A%20%221486188061%22%2C%22initial_referrer%22%3A%20%22http%3A%2F%2Flocalhost%2Fseven%2Fwinter%2F%22%2C%22initial_referrer_domain%22%3A%20%22localhost%22%2C%22%24dp%22%3A%200%2C%22%24_sessionPVTime%22%3A%201486189984%7D; CNZZDATA1255169715=968281248-1486188061-http%253A%252F%252Flocalhost%252F%7C1486188061; _csrf=bd2f7da02751c543dab4704302c68169cf1272d68b8205084867920b84288348a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Bccn6bLX-OV_zUDfZda8mqfuX3DNMniG%22%3B%7D; PHPSESSID=7u20t6uthk95lqmathj0qde4p3'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Lenovo\\Lenovo Home\\;C:\\Program Files\\TortoiseSVN\\bin;D:\\Git\\cmd;C:\\Program Files (x86)\\Lenovo\\Lenovo Home\\DCMainWin.exe'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.4 (Win32) OpenSSL/1.0.1e PHP/5.5.1 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.4 (Win32) OpenSSL/1.0.1e PHP/5.5.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '192.168.1.29'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.1.29'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'SERVER_ADMIN' => 'webmaster@dummy-host2.example.com'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/nine/cms2017/backend/web/index.php'
+    'REMOTE_PORT' => '52814'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=system/config'
+    'REQUEST_URI' => '/nine/cms2017/backend/web/index.php?r=system/config'
+    'SCRIPT_NAME' => '/nine/cms2017/backend/web/index.php'
+    'PHP_SELF' => '/nine/cms2017/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1487228149.072
+    'REQUEST_TIME' => 1487228149
+]
+2017-02-16 07:56:17 [192.168.1.29][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'app\models\UploadForm' not found' in D:\xampp\htdocs\nine\cms2017\backend\controllers\SystemController.php:81
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-02-16 07:56:17 [192.168.1.29][-][-][info][application] $_GET = [
+    'r' => 'system/config'
+]
+
+$_COOKIE = [
+    'video_cookie' => 'a'
+    'cn_9a154edda337ag57c050_dplus' => '{\"distinct_id\": \"15a07cf39012a1-082d4152ce2c358-44504130-100200-15a07cf3902157\",\"来源渠道\": \"\",\"$_sessionid\": 0,\"$_sessionTime\": 1486189984,\"initial_view_time\": \"1486188061\",\"initial_referrer\": \"http://localhost/seven/winter/\",\"initial_referrer_domain\": \"localhost\",\"$dp\": 0,\"$_sessionPVTime\": 1486189984}'
+    'CNZZDATA1255169715' => '968281248-1486188061-http%3A%2F%2Flocalhost%2F|1486188061'
+    '_csrf' => 'bd2f7da02751c543dab4704302c68169cf1272d68b8205084867920b84288348a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Bccn6bLX-OV_zUDfZda8mqfuX3DNMniG\";}'
+    'PHPSESSID' => '7u20t6uthk95lqmathj0qde4p3'
+]
+
+$_SERVER = [
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost/nine/cms2017/backend/web/index.php?r=index/in'
+    'HTTP_COOKIE' => 'video_cookie=a; cn_9a154edda337ag57c050_dplus=%7B%22distinct_id%22%3A%20%2215a07cf39012a1-082d4152ce2c358-44504130-100200-15a07cf3902157%22%2C%22%E6%9D%A5%E6%BA%90%E6%B8%A0%E9%81%93%22%3A%20%22%22%2C%22%24_sessionid%22%3A%200%2C%22%24_sessionTime%22%3A%201486189984%2C%22initial_view_time%22%3A%20%221486188061%22%2C%22initial_referrer%22%3A%20%22http%3A%2F%2Flocalhost%2Fseven%2Fwinter%2F%22%2C%22initial_referrer_domain%22%3A%20%22localhost%22%2C%22%24dp%22%3A%200%2C%22%24_sessionPVTime%22%3A%201486189984%7D; CNZZDATA1255169715=968281248-1486188061-http%253A%252F%252Flocalhost%252F%7C1486188061; _csrf=bd2f7da02751c543dab4704302c68169cf1272d68b8205084867920b84288348a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Bccn6bLX-OV_zUDfZda8mqfuX3DNMniG%22%3B%7D; PHPSESSID=7u20t6uthk95lqmathj0qde4p3'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Lenovo\\Lenovo Home\\;C:\\Program Files\\TortoiseSVN\\bin;D:\\Git\\cmd;C:\\Program Files (x86)\\Lenovo\\Lenovo Home\\DCMainWin.exe'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.4 (Win32) OpenSSL/1.0.1e PHP/5.5.1 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.4 (Win32) OpenSSL/1.0.1e PHP/5.5.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '192.168.1.29'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.1.29'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'SERVER_ADMIN' => 'webmaster@dummy-host2.example.com'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/nine/cms2017/backend/web/index.php'
+    'REMOTE_PORT' => '52831'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=system/config'
+    'REQUEST_URI' => '/nine/cms2017/backend/web/index.php?r=system/config'
+    'SCRIPT_NAME' => '/nine/cms2017/backend/web/index.php'
+    'PHP_SELF' => '/nine/cms2017/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1487228177.272
+    'REQUEST_TIME' => 1487228177
+]
