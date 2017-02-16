@@ -125,7 +125,7 @@ class Session extends Component implements \IteratorAggregate, \ArrayAccess, \Co
         $this->setCookieParamsInternal();
 
         @session_start();
-
+        //session_start();
         if ($this->getIsActive()) {
             Yii::info('Session started', __METHOD__);
             $this->updateFlashCounters();
