@@ -1,0 +1,162 @@
+<?php
+use yii\helpers\Url;
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="js/jquery.min.js"></script>
+<link rel="stylesheet" href="css/reset.css" />
+<link rel="stylesheet" href="css/content.css" />
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div>
+	<ul class="nav nav-tabs">
+	  <li class="active tab"><a href="javascript:;" >地区分类</a></li>
+	  <li class="tab"><a href="javascript:;">职位分类</a></li>
+	  <li class="tab"><a href="javascript:;">专业分类</a></li>
+	   <li class="tab"><a href="javascript:;">其他分类组</a></li>
+	</ul>
+</div>	
+<div>
+<body marginwidth="0" marginheight="0">
+	<div class="container">
+		<div class="public-nav">您当前的位置：<a href="">分类管理</a>><a href="">其他分类</a></div>
+		<div class="public-content">
+			<div class="public-content-cont">
+				<table class="public-cont-table">
+					<tr>
+						<th style="width:40%"><input type="checkbox" name="check_all">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=$g_name?></th>
+						<th style="width:10%">排序</th>
+						<th style="width:50%">操作</th>
+					</tr>
+					<tbody class='type'>
+					<?php
+						foreach($res as $k=>$v){
+						?>
+							<tr type="1" id="<?=$v['c_id']?>">
+							<td align="left">
+							<input type="checkbox" value="<?=$v['c_id']?>" name="t_id">
+							<span><span class='update'><?=$v['c_name']?></span></span>
+							</td>
+							<td>系统分类</td>						
+							<td>
+								<div class="table-fun">
+									<a href="javascript:;" class="del" c_id="<?=$v['c_id']?>">删除</a>
+								</div>
+							</td>
+							</tr>
+							<?php
+						}
+					?>
+					<div class="table-fun">
+					<a href="javascript:;" class="del_all" style="width:70px">删除所选</a>
+					<a href="<?=Url::to(['system/type'])?>" style="width:40px">返回</a>
+					</div>
+					</tbody>					
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</div>
+</body>
+</html>
+<script>
+	 $(function(){
+          //全选 全不选
+        $('input[name=check_all]').click(function(){
+            if($(this).prop('checked')==true){
+              $('input[name=t_id]').prop('checked',true) ;
+            }else{
+                $('input[name=t_id]').prop('checked',false) ;
+            }
+        });
+        //批删  button
+        $('.del_all').click(function(){
+           var res=window.confirm('你到底删不删啊！！！');
+            if(res){
+               var obj=$(this);
+               var tr=$('input[name=t_id]');
+               var str='';
+                for(var i=0;i<tr.length;i++) {
+                    if (tr.eq(i).prop('checked') == true) {
+                        str+=','+tr.eq(i).val(); 
+                    }
+                }
+                str=str.substr(1);
+                $.ajax({
+                    type:'post',
+                    url:"<?=Url::to(['system/del_type'])?>",
+                    data: {
+                        'ids': str
+                    },
+                    dataType:'json',
+                    success:function(msg){
+                        if(msg.error==1){
+                        	var trs=$('.type tr');
+                             for(var i=0;i<trs.length;i++) {
+                                 $.each(msg.id, function (k, v) {
+                                     if (trs.eq(i).attr('id') == v) {
+                                         trs.eq(i).remove();
+                                     }
+                                 })
+                             }
+                        }else{
+                            alert('删除失败');
+                        }
+                    }
+                })
+            }
+        })
+         //单删
+        $('.del').click(function(){
+           var res=window.confirm('你到底删不删啊！！！');
+            if(res){
+               var obj=$(this);
+ 				var ids=obj.attr('c_id');
+                $.ajax({
+                    type:'post',
+                    url:"<?=Url::to(['system/del_type'])?>",
+                    data: {
+                        'ids': ids
+                    },
+                    dataType:'json',
+                    success:function(msg){
+                        if(msg.error==1){
+                        	obj.parents('tr').remove();
+                        }else{
+                            alert('删除失败');
+                        }
+                    }
+                })
+            }
+        })
+        $(document).on('click','.update',function(){
+        	var obj=$(this);
+        	var c_name=obj.html();
+        	obj.parent().html('<input type="text" name="c_name" value="'+c_name+'">');
+        })
+         $(document).on('blur','input[name=c_name]',function(){
+         	var obj=$(this);
+         	var c_name=obj.val();
+         	var c_id=obj.parents('tr').attr('id');
+         	$.ajax({
+         		type:'post',
+         		url:"<?=Url::to(['system/update_name'])?>",
+                    data: {
+                        'c_name': c_name,
+                        'c_id':c_id
+                    },
+                    success:function(msg){
+                        if(msg==1){
+                        	obj.parent().html('<span class="update">'+c_name+'</span>');
+                        }else{
+                            alert('修改失败');
+                        }
+                    }
+         	})
+         })
+    })
+</script>

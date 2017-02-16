@@ -1,0 +1,89 @@
+<?php
+use yii\helpers\Url;
+?>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>后台欢迎页</title>
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/content.css" />	
+</head>
+<body marginwidth="0" marginheight="0">
+	<div class="container">
+		<div class="public-nav">您当前的位置：<a href="">管理首页</a>><a href="">网站配置</a></div>
+		<div class="public-content">
+			<div class="public-content-header">
+				<h3>修改网站配置</h3>
+			</div>
+			<div class="public-content-cont">
+			<form action="<?=Url::to(['system/config_do'])?>" method="post" enctype="multipart/form-data">
+				<div class="form-group">
+					<label for="">网站名称</label>
+					<input class="form-input-txt" type="text" name="w_name" value="<?= $result['w_name']?>" />
+				</div>
+				<div class="form-group">
+					<label for="">网站标题</label>
+					<input class="form-input-txt" type="text" name="w_title" value="<?= $result['w_title']?>" />
+				</div>
+				<div class="form-group">
+					<label for="">网站关键词</label>
+					<input class="form-input-txt" type="text" name="w_keyword" value="<?= $result['w_keyword']?>" />
+				</div>
+				<div class="form-group">
+					<label for="">网站描述</label>
+					<input class="form-input-txt" type="text" name="w_desc" value="<?= $result['w_desc']?>" />
+				</div>
+				<div class="form-group">
+					<label for="">网站logo</label>
+					<input type="file" name="w_logo">
+				</div>
+				<div class="form-group">
+					<label for="">网站路径</label>
+					<input class="form-input-txt" type="text" name="web" value="<?= $result['web']?>" />
+				</div>
+				<div class="form-group">
+					<label for="">支付宝账号</label>
+					<input class="form-input-txt" type="text" name="pay_num" value="<?= $result['pay_num']?>" />
+				</div>
+				<div class="form-group">
+					<label for="">收款方式</label>
+					<input class="form-input-radius" type="radio" name="pay_type" value="支付宝" 
+					<?php
+						if($result['pay_type']=='支付宝'){
+							echo 'checked';
+						}
+					?>
+					/>支付宝
+					<input class="form-input-radius" type="radio" name="pay_type" value="微信" 
+					<?php
+						if($result['pay_type']=='微信'){
+							echo 'checked';
+						}
+					?>
+					/>微信
+				</div>
+				<div class="form-group">
+					<label for="">会员公告</label>
+					<textarea class="form-input-textara" type="text" name="member_ad"><?= $result['member_ad']?></textarea> 
+				</div>
+				<div class="form-group">
+					<label for="">网站底部信息</label>
+					<textarea id="editor_id" name="web_content"  class="form-input-textara" style="width:700px;height:300px;">
+					<?= $result['web_content']?></textarea> 
+				</div>
+				<div class="form-group" style="margin-left:150px;">
+					<input type="submit" class="sub-btn" value="提  交" />
+					<input type="reset" class="sub-btn" value="重  置" />
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+<script src="kingediter/kindeditor-all-min.js"></script>
+<script>
+	 KindEditor.ready(function(K) {
+                window.editor = K.create('#editor_id');
+        });
+</script>
+</body>
+</html>

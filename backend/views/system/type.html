@@ -1,0 +1,329 @@
+<?php
+use yii\helpers\Url;
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/reset.css" />
+<link rel="stylesheet" href="css/content.css" />
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div>
+	<ul class="nav nav-tabs">
+	  <li class="active tab"><a href="javascript:;" >地区分类</a></li>
+	  <li class="tab"><a href="javascript:;">职位分类</a></li>
+	  <li class="tab"><a href="javascript:;">专业分类</a></li>
+	   <li class="tab"><a href="javascript:;">其他分类组</a></li>
+	</ul>
+</div>	
+<div class="tab1">	
+<body marginwidth="0" marginheight="0">
+	<div class="container">
+		<div class="public-nav">您当前的位置：<a href="">分类管理</a>><a href="">地区分类</a></div>
+		<div class="public-content">
+			<div class="public-content-cont">
+				<table class="public-cont-table">
+					<tr>
+						<th style="width:45%"><input type="checkbox" name="check_all">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地区分类</th>
+						<th style="width:5%">排序</th>
+						<th style="width:50%">操作</th>
+					</tr>
+					<tbody class='type'>
+					<?php
+						foreach($arr1 as $k=>$v){
+						?>
+							<tr id="<?=$v['id']?>" class="<?php echo $v['parentid']?>" type="1">
+							<td align="left">
+							<?php echo str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',$v['leave']);?>
+							<img src="images/left_e.gif" class="jia" state='1'>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="checkbox" value="<?=$v['id']?>" name="t_id">
+							<?=$v['categoryname']?>
+							</td>
+							<td><?=$v['category_order']?></td>						
+							<td>
+								<div class="table-fun">
+									<a href="<?=Url::to(['system/add_top','parentid'=>$v['id'],'type'=>1])?>">添加子分类</a>
+									<a href="<?=Url::to(['system/update_top','id'=>$v['id'],'type'=>1])?>">修改</a>
+									<a href="javascript:;" class="del">删除</a>
+								</div>
+							</td>
+							</tr>
+							<?php
+						}
+					?>
+					<div class="table-fun">
+					<a class="del_all">删除所选</a>
+					<a href="<?=Url::to(['system/add_top','type'=>1])?>">添加顶级分类</a>
+					</div>
+					</tbody>					
+				</table>				
+			</div>
+		</div>
+	</div>
+</body>
+</div>
+<div class="tab1" style="display:none">
+<body marginwidth="0" marginheight="0">
+	<div class="container">
+		<div class="public-nav">您当前的位置：<a href="">分类管理</a>><a href="">职位分类</a></div>
+		<div class="public-content">
+			<div class="public-content-cont">
+				<table class="public-cont-table">
+					<tr>
+						<!-- <th style="width:5%">选择</th> -->
+						<th style="width:45%"><input type="checkbox" name="check_all">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;职位分类</th>
+						<th style="width:5%">排序</th>
+						<th style="width:50%">操作</th>
+					</tr>
+					<tbody class='type'>
+					<?php
+						foreach($arr2 as $k=>$v){
+						?>
+							<tr id="<?=$v['id']?>" class="<?php echo $v['parentid']?>" type="2">
+							<td align="left">
+							<?php echo str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',$v['leave']);?>
+							<img src="images/left_e.gif" class="jia" state='1'>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="checkbox" value="<?=$v['id']?>"  name="t_id">
+							<?=$v['categoryname']?>
+							</td>
+							<td><?=$v['category_order']?></td>						
+							<td>
+								<div class="table-fun">
+									<a href="<?=Url::to(['system/add_top','parentid'=>$v['id'],'type'=>2])?>">添加子分类</a>
+									<a href="<?=Url::to(['system/update_top','id'=>$v['id'],'type'=>2])?>">修改</a>
+									<a href="javascript:;" class="del">删除</a>
+								</div>
+							</td>
+							</tr>
+							<?php
+						}
+					?>	
+					<div class="table-fun">
+					<a class="del_all">删除所选</a>
+					<a href="<?=Url::to(['system/add_top','type'=>2])?>">添加顶级分类</a>
+					</div>
+					</tbody>				
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</div>
+<div class="tab1" style="display:none">
+<body marginwidth="0" marginheight="0">
+	<div class="container">
+		<div class="public-nav">您当前的位置：<a href="">分类管理</a>><a href="">职位分类</a></div>
+		<div class="public-content">
+			<div class="public-content-cont">
+				<table class="public-cont-table">
+					<tr>
+						<!-- <th style="width:5%">选择</th> -->
+						<th style="width:45%"><input type="checkbox" name="check_all">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;专业分类</th>
+						<th style="width:5%">排序</th>
+						<th style="width:50%">操作</th>
+					</tr>
+					<tbody class='type'>
+					<?php
+						foreach($arr3 as $k=>$v){
+						?>
+							<tr id="<?=$v['id']?>" class="<?php echo $v['parentid']?>" type="3">
+							<td align="left">
+							<?php echo str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',$v['leave']);?>
+							<img src="images/left_e.gif" class="jia" state='1'>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="checkbox" value="<?=$v['id']?>" name="t_id">
+							<?=$v['categoryname']?>
+							</td>
+							<td><?=$v['category_order']?></td>						
+							<td>
+								<div class="table-fun">
+									<a href="<?=Url::to(['system/add_top','parentid'=>$v['id'],'type'=>3])?>">添加子分类</a>
+								</div>
+							</td>
+							</tr>
+							<?php
+						}
+					?>
+					<div class="table-fun">
+					<a class="del_all">删除所选</a>
+					<a href="<?=Url::to(['system/add_top','type'=>3])?>">添加顶级分类</a>
+					</div>
+					</tbody>					
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</div>
+<div class="tab1" style="display:none">
+<body marginwidth="0" marginheight="0">
+	<div class="container">
+		<div class="public-nav">您当前的位置：<a href="">分类管理</a>><a href="">其他分类</a></div>
+		<div class="public-content">
+			<div class="public-content-cont">
+				<table class="public-cont-table">
+					<tr>
+						<!-- <th style="width:5%">选择</th> -->
+						<th style="width:40%"><input type="checkbox" name="check_all">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分类名称</th>
+						<th style="width:10%">类型</th>
+						<th style="width:50%">操作</th>
+					</tr>
+					<tbody >
+					<?php
+						foreach($arr4 as $k=>$v){
+						?>
+							<tr id="<?=$v['g_id']?>" type="1">
+							<td align="left">
+							<input type="checkbox" value="<?=$v['g_id']?>" name="t_id">
+							<?=$v['g_name']?>
+							</td>
+							<td>系统分类</td>						
+							<td>
+								<div class="table-fun">
+									<a href="<?=Url::to(['system/show_type','g_alias'=>$v['g_alias'],'g_name'=>$v['g_name']])?>">查看</a>
+								</div>
+							</td>
+							</tr>
+							<?php
+						}
+					?>
+					</tbody>					
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</div>
+</body>
+</html>
+<script>
+
+	//设置点击事件触发标签页效果
+	$(document).on('click','.tab',function()
+	{
+		var _this = $(this);
+		_this.siblings().removeAttr('class','active').attr('class','tab');
+		_this.attr('class','active tab');
+		$('.tab1').eq(_this.index()).removeAttr('style');
+		$('.tab1').eq(_this.index()).siblings('.tab1').attr('style','display:none');
+	})
+	 $(function(){
+        //页面加载   刷新页面就执行
+        var tr=$('.type tr');
+        for(var i=0; i<tr.length;i++){
+            if(tr.eq(i).attr('class')!=0){
+                tr.eq(i).hide();
+            }
+        }
+     //展示 隐藏下一级元素
+	     $(document).on('click','.jia',function(){
+	        var obj=$(this);
+	        var tr=$(this).parents('tr');
+	        var id=tr.attr('id');
+	        var tr=$('.type tr');
+	        if(obj.attr('state')==1) {
+	            for (var i = 0; i < tr.length; i++) {
+	                if (tr.eq(i).attr('class') == id) {
+	                    tr.eq(i).show();
+	                    obj.attr('src', 'images/left_d.gif');
+	                    obj.attr('state', 0);
+	                }
+	            }
+	        }else {
+	            for(var i = 0; i < tr.length; i++) {
+	                if (tr.eq(i).attr('class') == id) {
+	                    tr.eq(i).hide();
+	                    obj.attr('src', 'images/left_e.gif');
+	                    obj.attr('state', 1);
+	                }
+	            }
+	        }
+	    });
+          //全选 全不选
+        $(document).on('click','input[name=check_all]',function(){
+            if($(this).prop('checked')==true){
+              $('input[name=t_id]').prop('checked',true) ;
+            }else{
+                $('input[name=t_id]').prop('checked',false) ;
+            }
+        });
+         //删除  删除顶级 下面的也删除
+        $(document).on('click','.del',function(){
+           var res=window.confirm('你到底删不删啊！！！');
+            if(res){
+                var obj=$(this);
+                var id=obj.parents('tr').attr('id');
+                var type=obj.parents('tr').attr('type');
+                $.ajax({
+                    type:'post',
+                    url:"<?=Url::to(['system/del'])?>",
+                    data: {
+                        'id': id,
+                        'type':type
+                    },
+                    dataType:'json',
+                    success:function(msg){
+                        if(msg.error==1){
+                             var tr=$('.type tr');
+                             for(var i=0;i<tr.length;i++) {
+                                 $.each(msg.id, function (k, v) {
+                                     if (tr.eq(i).attr('id') == v) {
+                                         tr.eq(i).remove();
+                                     }
+                                 })
+                             }
+                        }else{
+                            alert('删除失败');
+                        }
+                    }
+                })
+            }
+        })
+        //批删  button
+        $(document).on('click','.del_all',function(){
+           var res=window.confirm('你到底删不删啊！！！');
+            if(res){
+               var obj=$(this);
+               var tr=$('input[name=t_id]');
+               var str='';
+                for(var i=0;i<tr.length;i++) {
+                    if (tr.eq(i).prop('checked') == true) {
+                        str+=','+tr.eq(i).val();
+                        var type=tr.eq(i).parents('tr').attr('type');
+                    }
+                }
+                str=str.substr(1);
+                $.ajax({
+                    type:'post',
+                    url:"<?=Url::to(['system/del_all'])?>",
+                    data: {
+                        'ids': str,
+                        'type':type
+                    },
+                    dataType:'json',
+                    success:function(msg){
+                        if(msg.error==1){
+                        	var trs=$('.type tr');
+                             for(var i=0;i<trs.length;i++) {
+                                 $.each(msg.id, function (k, v) {
+                                     if (trs.eq(i).attr('id') == v) {
+                                         trs.eq(i).remove();
+                                     }
+                                 })
+                             }
+                        }else{
+                            alert('删除失败');
+                        }
+                    }
+                })
+            }
+        })
+    })
+</script>
