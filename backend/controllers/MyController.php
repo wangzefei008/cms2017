@@ -1,6 +1,6 @@
 <?php
 namespace backend\controllers;
-	header('content-type:text/html;charset=utf-8');
+header('content-type:text/html;charset=utf-8');
 use Yii;
 use yii\web\Controller;
 use backend\models\Admin;
@@ -11,8 +11,10 @@ class MyController extends Controller
 	//类似于__construct 
 	public function init()
 	{
+		//禁用csrf   yii  ajax  400
+		$this->enableCsrfValidation = false;
 		$this->actionCheck_login();
-		$this->actionRbac();
+		//$this->actionRbac();
 	}
 
 	//防非法登陆

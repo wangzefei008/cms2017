@@ -71,10 +71,7 @@ class SystemController extends MyController
 		$model->save();
 		$this->redirect(['system/safe']);
 	}
-	//禁用csrf   yii  ajax  400
-    public function init(){
-    $this->enableCsrfValidation = false;
-	}
+
 	//网站配置
 	public function actionConfig()
 	{

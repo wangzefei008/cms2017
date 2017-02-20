@@ -108,3 +108,75 @@ Array
     ]
     'argc' => 2
 ]
+2017-02-20 14:36:51 [-][-][-][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'You should configure "authManager" component to use database before executing this migration.' in F:\wzf20170209\cms2017\vendor\yiisoft\yii2\rbac\migrations\m140506_102106_rbac_init.php:28
+Stack trace:
+#0 F:\wzf20170209\cms2017\vendor\yiisoft\yii2\rbac\migrations\m140506_102106_rbac_init.php(35): m140506_102106_rbac_init->getAuthManager()
+#1 F:\wzf20170209\cms2017\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(492): m140506_102106_rbac_init->up()
+#2 F:\wzf20170209\cms2017\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(129): yii\console\controllers\BaseMigrateController->migrateUp('m140506_102106_...')
+#3 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#4 F:\wzf20170209\cms2017\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#5 F:\wzf20170209\cms2017\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 F:\wzf20170209\cms2017\vendor\yiisoft\yii2\console\Controller.php(91): yii\base\Controller->runAction('', Array)
+#7 F:\wzf20170209\cms2017\vendor\yiisoft\yii2\base\Module.php(455): yii\console\Controller->runAction('', Array)
+#8 F:\wzf20170209\cms2017\vendor\yiisoft\yii2\console\Application.php(167): yii\base\Module->runAction('migrate', Array)
+#9 F:\wzf20170209\cms2017\vendor\yiisoft\yii2\console\Application.php(143): yii\console\Application->runAction('migrate', Array)
+#10 F:\wzf20170209\cms2017\vendor\yiisoft\yii2\base\Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#11 F:\wzf20170209\cms2017\yii(27): yii\base\Application->run()
+#12 {main}
+2017-02-20 14:36:46 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\ÍõÔó·É\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-3HJBJ4A'
+    'ComSpec' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'FPS_BROWSER_APP_PROFILE_STRING' => 'Internet Explorer'
+    'FPS_BROWSER_USER_PROFILE_STRING' => 'Default'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ÍõÔó·É'
+    'LOCALAPPDATA' => 'C:\\Users\\ÍõÔó·É\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-3HJBJ4A'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OneDrive' => 'C:\\Users\\ÍõÔó·É\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'D:\\wamp\\php\\MySQL\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\lamp\\SVN\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;F:\\Program Files\\Git\\cmd;D:\\wamp\\php\\php55n;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\ÍõÔó·É\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\ÍõÔó·É\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PHP_COMMAND' => 'D:wamp/php/php55n/php.exe'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'TEMP' => 'C:\\Users\\ÍõÔó·É\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\ÍõÔó·É\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-3HJBJ4A'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-3HJBJ4A'
+    'USERNAME' => 'ÍõÔó·É'
+    'USERPROFILE' => 'C:\\Users\\ÍõÔó·É'
+    'windir' => 'C:\\WINDOWS'
+    'YII_PATH' => 'F:\\wzf20170209\\cms2017\\'
+    'PHP_SELF' => 'F:\\wzf20170209\\cms2017\\yii'
+    'SCRIPT_NAME' => 'F:\\wzf20170209\\cms2017\\yii'
+    'SCRIPT_FILENAME' => 'F:\\wzf20170209\\cms2017\\yii'
+    'PATH_TRANSLATED' => 'F:\\wzf20170209\\cms2017\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1487572606.2973
+    'REQUEST_TIME' => 1487572606
+    'argv' => [
+        0 => 'F:\\wzf20170209\\cms2017\\yii'
+        1 => 'migrate'
+        2 => '--migrationPath=@yii/rbac/migrations/'
+    ]
+    'argc' => 3
+]

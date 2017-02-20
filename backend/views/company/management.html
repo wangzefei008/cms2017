@@ -1,0 +1,140 @@
+<?php
+use yii\helpers\Url;
+use yii\widgets\LinkPager;
+use yii\web\View;
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>企业管理</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/content.css" />
+</head>
+<body marginwidth="0" marginheight="0">
+<div class="container">
+    <div class="public-nav">您当前的位置：<a href="javascript:;">后台</a><a href="javascript:;">企业</a>><a href="javascript:;">企业管理</a></div>
+    <div class="public-content">
+        <div class="public-content-header">
+            <h3>简历列表展示</h3>
+        </div>
+        <div class="public-content-cont">
+        <center>
+            <form action="<?php echo Url::to(['person/resumelist'])?>" method="post">
+                审核状态：
+                    <select name="audit_status" class="audit_status">
+                        <option value="">不限</option>
+                        <option value="1">已审核</option>
+                        <option value="0">未审核</option>
+                    </select>
+                   添加时间：
+                        <select name="add_time" class="add_time">
+                            <option value="">不限</option>
+                            <option value="259200">三天内</option>
+                            <option value="604800">一周内</option>
+                            <option value="2592000">一月内</option>
+                        </select>
+                    &nbsp; &nbsp; &nbsp; &nbsp;
+                   <span class="table-fun"><a class="search" href="javascript:;">点击搜索</a></span>
+            
+            <table class="public-cont-table">
+                <tr>
+                    <th style="width:10%">职位名称</th>
+                    <th style="width:15%">所属会员</th>
+                    <th style="width:15%">审核状态</th>
+                    <th style="width:15%">添加时间</th>
+                    <th style="width:15%">刷新时间</th>
+                    <th style="width:30%">操作</th>
+                </tr>
+                <tbody class="tbody">
+                    <?php
+                        foreach($models as $k=>$v)
+                        {?>
+                            <tr>
+                                <td><?=$v['companyname']?></td>
+                                <td j_id="<?=$v['id']?>"><span class="update"><?=$v['email']?></span></td>
+                                <td><?=$v['user_status']?></td>
+                                <td><?=$v['addtime']?></td>
+                                <td><?=$v['refreshtime']?></td>
+                                <td><a href="<?=Url::to(['company/del1','id'=>$v['id']])?>">删除</a></td>
+                            </tr>
+                        <?php }
+                    ?>
+                </tbody>
+            </table>
+            </center>
+                <div class="page">
+                    <!--分页-->
+                    <?= LinkPager::widget(['pagination' =>  $pages, 'nextPageLabel' => '下一页', 'prevPageLabel' => '上一页', ]); ?>
+                </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="js/jquery.min.js"></script>
+<script>
+
+
+    //点击搜索触发
+    $('.search').click(function()
+    {
+        var audit_status = $('.audit_status').val();
+        var add_time = $('.add_time').val();
+        var tbody = $('.tbody');
+        $.get("<?=Url::to(['company/search1'])?>",{user_status:audit_status,add_time:add_time},
+            function(msg)
+            {
+                var str = ''; 
+                $.each(msg.models,function(k,v)
+                {
+                    var addtime = v['addtime'];
+                    var refreshtime = v['refreshtime']
+                    str += "<tr>\
+                    <td>"+v['companyname']+"</td>\
+                    <td j_id="+v['id']+"><span class=\"update\">"+v['email']+"</span></td>\
+                    <td>"+v['user_status']+"</td>\
+                    <td>"+addtime+"</td>\
+                    <td>"+refreshtime+"</td>\
+                    <td>\
+                        <div class=\"table-fun\">\
+                            <a href=\"<?=Url::to(['company/del','id'=>"+v['id']+"])?>\">删除</a>\
+                        </div>\
+                    </td>\
+                </tr>"
+                })
+                tbody.html(str);
+                console.log(str);
+            },'json') 
+    })
+
+        // 即点即改
+        $(document).on('click','.update',function()
+        {
+            var _this = $(this);
+            //获取当前值及id
+            var val = _this.html();
+
+            //console.log(1);
+            //创建一个input
+            _this.parent().html('<input type="text" value="'+val+'" class="inp" >');
+        })
+
+        $(document).on('blur','.inp',function()
+        {
+            var _this = $(this);
+            //获取文本框的值
+            var val = _this.val();
+            var id = _this.parent().attr('j_id');
+            //console.log(val);
+            // 使用ajax
+            $.get("<?=Url::to(['company/update1'])?>",{val:val,id:id},function(msg)
+            {
+                // console.log(msg);
+                if(msg == 1)
+                {
+                    _this.parent().html('<span class="update">'+val+'</span>');
+                }
+            })
+        })
+</script>
