@@ -15,6 +15,7 @@ use app\models\Major;
 use app\models\Group;
 use app\models\Category;
 use yii\data\Pagination;
+use yii\web\UploadedFile;
 
 class SystemController extends MyController
 {
@@ -76,16 +77,29 @@ class SystemController extends MyController
 	public function actionConfig()
 	{
 		$result=Config::find()->where(['id'=>1])->asArray()->one();
-		return $this->renderpartial('config.html',['result'=>$result]);
+		$model=new UploadForm;
+		return $this->renderpartial('config.html',['result'=>$result,'model'=>$model]);
 	}
 	//网站配置修改
 	public function actionConfig_do()
 	{
 		$arr=Yii::$app->request->post();
-        $result=Config::find()->where(['id'=>1])->one();
-		$result->setAttributes($arr);
-		$result->save();
-		return $this->redirect(['/system/config']);
+		// print_r($arr);die;
+		unset($arr['UploadForm']);
+		$model = new UploadForm();
+        $imginfo=$model->imageFiles = UploadedFile::getInstances($model, 'imageFiles');
+        // print_r($imginfo);die;
+        $img_name=$imginfo[0]->name;
+        $img_path='uploads/'.$img_name;
+        $aa=$model->upload();
+        // print_r($aa);die;
+        if($aa){
+        	$arr['w_logo']=$img_path;
+        }	
+         $result=Config::find()->where(['id'=>1])->one();
+		 $result->setAttributes($arr);
+		 $result->save();
+		 return $this->redirect(['/system/config']);	
 	}
 	//分类管理 首页
 	public function actionType()

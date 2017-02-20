@@ -20,9 +20,140 @@ use yii\helpers\Url;
 	</ul>
 </div>	
 
-<div class="tab1" ><? include('sys_captcha.html') ?></div>
-<div class="tab1" style="display:none"><? include('sys_filter.html') ?></div>
-<div class="tab1" style="display:none"><? include('sys_ip.html') ?></div>
+<div class="tab1" >
+	<div class="toptip">
+		<h2>提示：</h2>
+		<p>
+		验证码可以避免恶意注册及恶意发布，启用验证码会使得部分操作变得繁琐，建议仅在必需时打开
+	<br />
+	使用 TTF 字体作为验证码文字，把下载的 TTF 英文字体文件上传到 data/font/en 目录下，系统将随机使用里面的字体文件作为验证码的文字
+	<br />
+	使用中文图片验证码前，需要把包含完整中文汉字的 TTF 中文字体文件上传到 data/font/cn 目录下，系统将随机使用里面的字体文件作为验证码的文字
+	<br />
+
+	</p>
+	</div>
+	<h2>验证码设置：</h2>
+	    <form id="form2" name="form2" method="post"   action="<?=Url::to(['system/captcha'])?>" >
+	    <input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
+	  <table width="100%" border="0" cellpadding="4" cellspacing="0"   >
+	    <tr>
+	      <td width="120" height="30" align="right"  >验证码宽度：</td>
+	      <td  ><input name="captcha_width" type="text" class="input_text_200"   maxlength="3" value="<?=$data['captcha_width']?>"/>
+		  <span class="admin_note">验证码图片宽度，建议在 60 - 180 范围内取值，0为自适应</span>
+	       </td>
+	    </tr>
+		   <tr>
+	      <td width="120" height="30" align="right"  >验证码高度：</td>
+	      <td  ><input name="captcha_height" type="text" class="input_text_200"   maxlength="3" value="<?=$data['captcha_height']?>"/>
+		  <span class="admin_note">验证码图片高度，建议在 20 - 50 范围内取值，0为自适应</span>
+	       </td>
+	    </tr> 
+		    <tr>
+	      <td height="30" align="right"  >文字颜色：</td>
+	      <td   >
+		  
+		  <table width="100%"   border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td width="245" >
+		<input name="captcha_textcolor"  id="captcha_textcolor" type="text" class="iColorPicker input_text_200"  onclick="iColorShow('captcha_textcolor','icp_captcha_textcolor')"  maxlength="7" value="<?=$data['captcha_textcolor']?>"/></td>
+	    <td><span class="admin_note" style="float:left">验证码文字颜色，空 为随机</span></td>
+	  </tr>
+	</table>
+	       </td>
+	    </tr>
+		 <tr>
+	      <td height="30" align="right"  >文字大小：</td>
+	      <td   ><input name="captcha_textfontsize" type="text" class="input_text_200"   maxlength="3" value="<?=$data['captcha_textfontsize']?>"/>
+		  <span class="admin_note">验证码文字大小，建议在 12 - 50 范围内取值</span>
+	       </td>
+	    </tr>
+		<tr>
+	      <td height="30" align="right"  >字符数量：</td>
+	      <td   ><input name="captcha_textlength" type="text" class="input_text_200"   maxlength="2" value="<?=$data['captcha_textlength']?>"/>
+		   <span class="admin_note">验证码字符数量，建议在 2 - 6 范围内取值，0 为随机</span>
+	       </td>
+	    </tr>
+	    <tr>
+	      <td height="30" align="right"  >&nbsp;</td>
+	      <td height="50"  > 
+	            <input type="submit" class="admin_submit"    value="保存"/>
+	    
+	       </td>
+	    </tr>
+		
+	  </table>
+	    </form>
+	</div>
+</div>
+<div class="tab1" style="display:none">
+	<div class="toptip">
+		<h2>提示：</h2>
+		<p>
+	多个关键字请用 “|” 隔开。<br />
+
+	</p>
+	</div>
+
+	<div class="toptit">垃圾信息过滤</div>
+	<form action="<?=Url::to(['system/filter'])?>" method="post"  name="form1" id="form1">
+	<input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
+		  <table width="700" border="0" cellspacing="10" cellpadding="1"  >
+	        <tr>
+	          <td width="162" align="right" valign="top" style="padding:3px;">垃圾信息关键字<br />
+	            (请用“|”隔开关键字)</td>
+	          <td valign="top"><textarea name="filter" class="input_text_400" id="filter" style="height:100px;"></textarea></td>
+	        </tr>
+	        <tr>
+
+	          <td align="right">出错提示</td>
+	          <td><input name="filter_tips" type="text"  class="input_text_400" id="filter_tips" value="" maxlength="150"/></td>
+	        </tr>
+	        <tr>
+	          <td align="right">&nbsp;</td>
+	          <td><span style="font-size:14px;">
+	            <input type="submit" class="admin_submit"    value="保存修改"/>
+	          </span></td>
+	        </tr>
+	      </table>
+		    </form>
+	  
+
+	</div>
+</div>
+<div class="tab1" style="display:none">
+	<div class="toptip">
+		<h2>提示：</h2>
+		<p>
+	多个关键字请用 “|” 隔开。<br />
+	      关键字支持使用正则表达式。<br />
+
+	</p>
+	</div>
+
+	 <div class="toptit">禁止访问IP</div>
+	 <form action="<?=Url::to(['system/ip'])?>" method="post"  name="form1" id="form1">
+	 <input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
+		  <table width="700" border="0" cellspacing="10" cellpadding="1" style=" margin-bottom:3px;">
+	        <tr>
+	          <td width="162" align="right" valign="top" style="padding:3px;">ip地址：<br />
+	            (请用“|”隔开多个ip地址)</td>
+	          <td valign="top"><textarea name="filter_ip" class="input_text_400" id="filter_ip" style="height:100px;"></textarea></td>
+	        </tr>
+	        <tr>
+	          <td align="right">出错提示</td>
+	          <td><input name="filter_ip_tips" type="text"  class="input_text_400" id="filter_ip_tips" value="" maxlength="150"/></td>
+	        </tr>
+	        <tr>
+	          <td align="right">&nbsp;</td>
+	          <td>
+	            <input type="submit" class="admin_submit"    value="保存修改"/>
+	          </td>
+	        </tr>
+	      </table>
+		    </form>
+	</div>
+</div>
 
 </body>
 </html>
