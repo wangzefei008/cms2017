@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $admin_id
  * @property integer $role_id
+ * @property integer $ar_id
  */
 class AdminRole extends \yii\db\ActiveRecord
 {
@@ -38,6 +39,7 @@ class AdminRole extends \yii\db\ActiveRecord
         return [
             'admin_id' => 'Admin ID',
             'role_id' => 'Role ID',
+            'ar_id' => 'Ar ID',
         ];
     }
 }

@@ -71,7 +71,7 @@ class CompanyProfile extends \yii\db\ActiveRecord
         return [
             // [['uid', 'tpl', 'companyname', 'nature', 'nature_cn', 'trade', 'trade_cn', 'district', 'sdistrict', 'street', 'street_cn', 'scale', 'scale_cn', 'registered', 'currency', 'address', 'contact', 'telephone', 'landline_tel', 'email', 'website', 'license', 'certificate_img', 'logo', 'contents', 'map_x', 'map_y', 'map_zoom', 'addtime', 'refreshtime', 'tag'], 'required'],
             // [['companyname', 'email','logo', 'contents'], 'required'],
-            [['uid', 'nature', 'trade', 'district', 'sdistrict', 'street', 'scale', 'audit', 'map_open', 'map_zoom', 'addtime', 'refreshtime', 'click', 'user_status', 'yellowpages', 'contact_show', 'telephone_show', 'address_show', 'email_show', 'robot', 'resume_processing', 'wzp_tpl'], 'integer'],
+            [['uid', 'nature', 'trade', 'district', 'sdistrict', 'street', 'scale', 'audit', 'map_open', 'map_zoom', 'add_time', 'refreshtime', 'click', 'user_status', 'yellowpages', 'contact_show', 'telephone_show', 'address_show', 'email_show', 'robot', 'resume_processing', 'wzp_tpl'], 'integer'],
             [['contents'], 'string'],
             [['tpl', 'companyname', 'tag'], 'string', 'max' => 60],
             [['nature_cn', 'trade_cn', 'scale_cn', 'logo'], 'string', 'max' => 30],
@@ -92,7 +92,7 @@ class CompanyProfile extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'c_id' => 'ID',
             'uid' => 'Uid',
             'tpl' => 'Tpl',
             'companyname' => 'Companyname',
@@ -124,7 +124,7 @@ class CompanyProfile extends \yii\db\ActiveRecord
             'map_x' => 'Map X',
             'map_y' => 'Map Y',
             'map_zoom' => 'Map Zoom',
-            'addtime' => 'Addtime',
+            'add_time' => 'Addtime',
             'refreshtime' => 'Refreshtime',
             'click' => 'Click',
             'user_status' => 'User Status',

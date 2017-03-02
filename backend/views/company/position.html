@@ -57,7 +57,7 @@ use yii\web\View;
                 <?php foreach($models as $key=>$val){?>
                 <tr >
                     <td ><?=$val['jobs_name']?></td>
-                    <td j_id="<?=$val['id']?>"><span class="update"><?=$val['companyname']?></span></td>
+                    <td j_id="<?=$val['id']?>"><span class="update"><?=$val['company_name']?></span></td>
                     <td><?=$val['user_status']?></td>
                     <td><?=$val['addtime']?></td>
                     <td><?=$val['deadline']?></td>
@@ -102,7 +102,7 @@ use yii\web\View;
                     var deadline = v['deadline']
                     str += "<tr>\
                     <td>"+v['jobs_name']+"</td>\
-                    <td j_id="+v['id']+"><span class=\"update\">"+v['companyname']+"</span></td>\
+                    <td j_id="+v['id']+"><span class=\"update\">"+v['company_name']+"</span></td>\
                     <td>"+v['user_status']+"</td>\
                     <td>"+addtime+"</td>\
                     <td>"+deadline+"</td>\

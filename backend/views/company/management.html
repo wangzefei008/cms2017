@@ -52,11 +52,11 @@ use yii\web\View;
                         {?>
                             <tr>
                                 <td><?=$v['companyname']?></td>
-                                <td j_id="<?=$v['id']?>"><span class="update"><?=$v['email']?></span></td>
+                                <td j_id="<?=$v['c_id']?>"><span class="update"><?=$v['email']?></span></td>
                                 <td><?=$v['user_status']?></td>
-                                <td><?=$v['addtime']?></td>
+                                <td><?=$v['add_time']?></td>
                                 <td><?=$v['refreshtime']?></td>
-                                <td><a href="<?=Url::to(['company/del1','id'=>$v['id']])?>">删除</a></td>
+                                <td><a href="<?=Url::to(['company/del1','id'=>$v['c_id']])?>">删除</a></td>
                             </tr>
                         <?php }
                     ?>
@@ -88,7 +88,7 @@ use yii\web\View;
                 var str = ''; 
                 $.each(msg.models,function(k,v)
                 {
-                    var addtime = v['addtime'];
+                    var addtime = v['add_time'];
                     var refreshtime = v['refreshtime']
                     str += "<tr>\
                     <td>"+v['companyname']+"</td>\

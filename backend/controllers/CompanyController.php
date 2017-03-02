@@ -159,10 +159,10 @@ class CompanyController extends MyController
 
 		foreach($models as $k=>$v)
 		{
-			$addtime = $models[$k]['addtime'];
+			$addtime = $models[$k]['add_time'];
 			$refreshtime = $models[$k]['refreshtime'];
 			//echo $addtime,$deadline;die;
-			$models[$k]['addtime'] = date("Y-m-d",$addtime);
+			$models[$k]['add_time'] = date("Y-m-d",$addtime);
 			$models[$k]['refreshtime'] = date("Y-m-d",$refreshtime);
 		}
 
@@ -207,10 +207,10 @@ class CompanyController extends MyController
 		// print_r($models);die;
 		foreach($models as $k=>$v)
 		{
-			$addtime = $models[$k]['addtime'];
+			$addtime = $models[$k]['add_time'];
 			$refreshtime = $models[$k]['refreshtime'];
 			//echo $addtime,$deadline;die;
-			$models[$k]['addtime'] = date("Y-m-d",$addtime);
+			$models[$k]['add_time'] = date("Y-m-d",$addtime);
 			$models[$k]['refreshtime'] = date("Y-m-d",$refreshtime);
 		}
 		$val['models'] = $models;
@@ -251,7 +251,7 @@ class CompanyController extends MyController
 		//接收传送id
 		$id = isset($_GET['id'])?$_GET['id']:null;
 		$model = new CompanyProfile;
-		$info = $model::find()->where(['id' => $id])->one()->delete();
+		$info = $model::find()->where(['c_id' => $id])->one()->delete();
 		if($info)
 		{
 			$this->redirect(['/company/management']);

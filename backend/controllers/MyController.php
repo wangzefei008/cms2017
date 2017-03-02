@@ -5,6 +5,10 @@ use Yii;
 use yii\web\Controller;
 use backend\models\Admin;
 use backend\models\AdminRole;
+use backend\models\Role;
+use backend\models\RolePower;
+use backend\models\Power;
+use yii\web\ForbiddenHttpException;
 
 class MyController extends Controller
 {
@@ -14,7 +18,7 @@ class MyController extends Controller
 		//禁用csrf   yii  ajax  400
 		$this->enableCsrfValidation = false;
 		$this->actionCheck_login();
-		//$this->actionRbac();
+		$this->actionRbac();
 	}
 
 	//防非法登陆
@@ -36,14 +40,25 @@ class MyController extends Controller
 		$method = substr($requestedRoute,$gang+1);
 		$uname = Yii::$app->session['uname'];
 		//根据用户名查询相关权限
-		$re = Admin::find()
-		->select('*')
-		->join('JOIN','qs_admin_role as ar','qs_admin.admin_id = ar.admin_id')
-		->join('JOIN','qs_role as r','ar.role_id = r.role_id')
-		->join('JOIN','qs_role_power as rp','r.role_id = rp.role_id')
-		->join('JOIN','qs_power as p','rp.power_id = p.power_id')
-		->where(['qs_admin.admin_name'=>$uname])
-		->asArray()->all();
+		$connection = Yii::$app->db;
+		$sql="select * from qs_admin as a
+				join qs_admin_role as ar on a.admin_id = ar.admin_id
+				join qs_role as r on ar.role_id = r.role_id
+				join qs_role_power as rp on rp.role_id = r.role_id
+				join qs_power as p on rp.power_id = p.power_id
+				where a.admin_name = '$uname'";
+		$command = $connection->createCommand($sql);
+		$re = $command->queryAll();
+		// $re = Admin::find()
+		// ->select('*')
+		// ->join('JOIN','qs_admin_role as ar','qs_admin.admin_id = ar.admin_id')
+		// ->join('JOIN','qs_role as r','ar.role_id = r.role_id')
+		// ->join('JOIN','qs_role_power as rp','r.role_id = rp.role_id')
+		// ->join('JOIN','qs_power as p','rp.power_id = p.power_id')
+		// ->where(['qs_admin.admin_name'=>$uname])
+		// ->asArray()->all();
+		// echo '<pre>';
+		// print_r($re);die;
 		//循环获取controller和method
 		foreach($re as $k => $v)
 		{

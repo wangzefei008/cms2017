@@ -129,7 +129,7 @@ class DefaultController extends Controller
             }
 
             if ($content !== '') {
-                $this->_manifest = array_reverse(unserialize($content), true);
+                @$this->_manifest = array_reverse(unserialize($content), true);
             } else {
                 $this->_manifest = [];
             }

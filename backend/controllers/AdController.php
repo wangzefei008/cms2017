@@ -8,7 +8,7 @@ use app\models\Adcate;
 use yii\data\Pagination;
 use yii\helpers\Url;
 
-class AdController extends Controller
+class AdController extends MyController
 {
 	//禁用csrf   yii  ajax  400
     public function init(){
