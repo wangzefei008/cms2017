@@ -1,0 +1,39 @@
+<?php
+
+use yii\helpers\Url;
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/content.css" />
+</head>
+<body marginwidth="0" marginheight="0">
+<div class="container">
+    <div class="public-content">
+        <div class="public-content-header">
+            <h3>修改热词</h3>
+        </div>
+        <div class="public-content-cont two-col">
+            <div class="public-cont-left">
+                <div class="public-cont-title">
+                    <h3>修改热词</h3>
+                </div>
+                <form action="<?php echo Url::to(['system/hoteditdo'])?>" method="post">
+                    <table>
+                        <tr><td><input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>"></td></tr>
+                        <tr><td>关键词：</td><td><input type="text" value="<?= $data['w_word']?>" name="w_word"></td></tr>
+                        <tr><td>搜索次数：</td><td><input type="text" value="<?= $data['w_hot']?>" name="w_hot"></td></tr>
+                        <tr><td></td><td><input name="w_id" type="hidden" value="<?= $data['w_id']?>"></td></tr>
+                        <tr><td><input type="submit" value="提交"><input type="reset" value="重置"></td></tr>
+                    </table>
+                    </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

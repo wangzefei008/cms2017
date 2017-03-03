@@ -46,9 +46,9 @@ use yii\helpers\Url;
 							<li class="active"><a href="<?=Url::to(['system/config'])?>" target="content">网站配置</a></li>
 							<li><a href="<?=Url::to(['system/safe'])?>" target="content">安全设置</a></li>
 							<li><a href="<?=Url::to(['system/type'])?>" target="content">分类管理</a></li>
-							<li><a href="javascript:;" target="content">热门关键词</a></li>
-							<li><a href="javascript:;" target="content">会员日志</a></li>
-							<li><a href="javascript:;" target="content">网站管理员</a></li>
+                            <li><a href="<?php echo Url::to(['system/hotword'])?>" target="content">热门关键词</a></li>
+                            <li><a href="<?php echo Url::to(['system/memberlog'])?>" target="content">会员日志</a></li>
+							<li><a href="<?= Url::to(['system/manage'])?>" target="content">网站管理员</a></li>
 						</ul>
 					</div>
 				</li>
@@ -66,8 +66,8 @@ use yii\helpers\Url;
 					<a href="javascript:;">个人管理</a>
 					<div class="ifame-item-sub">
 						<ul>
-							<li><a href="javascript:;" target="content">简历列表</a></li>
-							<li><a href="javascript:;" target="content">个人会员</a></li>
+                            <li><a href="<?php echo Url::to(['person/resumelist'])?>" target="content">简历列表</a></li>
+                            <li><a href="<?php echo Url::to(['person/memberslist','utype'=>2])?>" target="content">个人会员</a></li>
 						</ul>
 					</div>
 				</li>

@@ -1,0 +1,76 @@
+<?php
+use yii\helpers\Url;
+use yii\widgets\LinkPager;
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>后台欢迎页</title>
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/content.css" />
+</head>
+<body marginwidth="0" marginheight="0">
+	<div class="container">
+		<div class="public-nav">您当前的位置：<a href="">管理首页</a>><a href="">网站管理员管理</a></div>
+		<div class="public-content">
+			<div class="public-content-header">
+				<h3 style="float: left; margin-right: 20px;">网站管理员列表</h3><a href="<?php echo Url::to(['system/manageadd'])?>"><font color="blue">管理员添加</font></a>
+			</div>
+
+			<div class="public-content-cont">
+
+				<table class="public-cont-table">
+					<tr>
+						<th style="width:5%">ID</th>
+						<th style="width:10%">管理员名称</th>
+						<th style="width:25%">管理员邮箱</th>
+						<th style="width:35%">管理员级别</th>
+						<th style="width:25%">操作</th>
+					</tr>
+					<?php foreach($models as $k=>$v) { ?>
+					<tr>
+						<td><?php echo $v['admin_id']?></td>
+						<td><?php echo $v['admin_name']?></td>
+						<td><?php echo $v['email']?></td>
+						<td><?php echo $v['rank']?></td>
+						<td><div style="margin-left: 80px;">
+							<a href="<?php echo Url::to(['system/manage_update','id'=>$v['admin_id']])?>" style="float: left; margin-right: 5px;"><font color="blue">修改密码</font></a>
+							<a href="javascript:void(0) " mid="<?php echo $v['admin_id']?>" style="float: left; margin-right: 5px;" class="del"><font color="blue">删除</font></a>
+						</div>
+						</td>
+					</tr>
+					<?php } ?>
+				</table>
+				<div class="page">
+					<?php echo LinkPager::widget([
+					'pagination' => $pages,
+					]); ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script>
+	$(function($) {
+		$(".del").click( function () {
+			var admin_id = $(this).attr('mid');
+			var $a = $(this);
+			$.ajax({
+				type: "POST",
+				url: "<?php echo Url::to(['system/manage_del'])?>",
+				data: {admin_id:admin_id,'_csrf':'<?= Yii::$app->request->csrfToken ?>'},
+				success: function(msg){
+					if(msg==1){
+						 $a.parent().parent().parent().remove()
+					}else{
+						alert("删除失败");
+					}
+				}
+			});
+		});
+	});
+</script>
+</html>

@@ -1,0 +1,41 @@
+<?php
+
+use yii\helpers\Url;
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/content.css" />
+</head>
+<body marginwidth="0" marginheight="0">
+<div class="container">
+    <div class="public-content">
+        <div class="public-content-header">
+            <h3>修改简历</h3>
+        </div>
+        <div class="public-content-cont two-col">
+            <div class="public-cont-left">
+                <div class="public-cont-title">
+                    <h3>修改简历</h3>
+                </div>
+                <form action="<?php echo Url::to(['person/resumeeditdo'])?>" method="post">
+                    <table>
+                        <tr><td><input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>"></td></tr>
+                        <tr><td>简历状态：</td><td><input type="text" value="<?= $data['audit']?>" name="audit"></td><td>(1为已经审核，0为未审核)</td></tr>
+                        <tr><td>人才等级：</td><td><input type="text" value="<?= $data['talent']?>" name="talent"></td><td>(1为普通人才，2为高级人才，3为待开通高级人才)</td></tr>
+                        <tr><td>审核照片：</td><td><input type="text" value="<?= $data['photo_audit']?>" name="photo_audit"></td><td>(1为照片审核通过，2为照片待审核，3为照片审核未通过)</td></tr>
+                        <input type="hidden" value="<?= $data['id']?>" name="id">
+                        <tr><td></td><td><input name="id" type="hidden" value="<?= $data['id']?>"></td></tr>
+                        <tr><td></td><td><input type="submit" value="提交"><input type="reset" value="重置"></td></tr>
+                    </table>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

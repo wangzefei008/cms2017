@@ -14,6 +14,8 @@ use app\models\Job;
 use app\models\Major;
 use app\models\Group;
 use app\models\Category;
+use app\models\Hotword;
+use app\models\MembersLog;
 use yii\data\Pagination;
 use yii\web\UploadedFile;
 
@@ -314,6 +316,255 @@ class SystemController extends MyController
 			echo 0;
 		}
 	}
+    ////////热门关键词///////////////
+    public function actionHotword(){//展示热门关键词方法
+        header("content-type:text/html;charset=utf-8");
+        $hotword=new hotword;//实例化
+        //分页
+        $query = $hotword::find();//拿数据
+        //  print_r($query);die;
+        $pages = new Pagination([
+            'totalCount' => $query->count(),
+            'pageSize'   => 9   //每页显示条数
+        ]);
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        return $this->render('hotword.html', [
+            'models' => $models,
+            'pages' => $pages,
+        ]);
+    }
+    public  function actionHotedit(){//做修改
+        $id=$_GET['id'];//拿要修改的id
+        // print_r($id);
+        $hotword=new hotword;//实例化数据库
+        $data= $hotword::find()->where(['w_id'=>$id])->asArray()->one();//条件查询(其中asArrary将结果转换成数组)
+        //print_r($data);die;
+        return $this->renderPartial('hotedit.html',['data'=>$data]);//渲染模板
+    }
+    public  function actionHoteditdo(){//执行修改
+        $hotword=new hotword;//实例化
+        $getdata=$_POST;//接收表单提交数据
+        //  print_r($getdata['w_id']);die;
+        $data= $hotword::find()->where(['w_id'=>$getdata['w_id']])->one();//条件查询
+        // print_r($data);
+        $data->w_word=$getdata['w_word'];
+        $data->w_hot=$getdata['w_hot'];
+        $data->save();//保存
+        return $this->redirect(['system/hotword']);//跳转至展示页面
+    }
+    public  function actionHotdel(){//执行删除
+        $hotword=new hotword;//实例化
+        $id=$_GET['id'];//拿要修改的id
+        $data= $hotword::find()->where(['w_id'=>$id])->all();//条件查询
+        // print_r($data);die;
+        $data[0]->delete();
+        return $this->redirect(['system/hotword']);//跳转至展示页面
+    }
+    public  function actionHotadd(){//添加
+        return $this->renderPartial('hotadd.html');//渲染模板
+    }
+    public  function actionHotadddo(){//执行添加
+        $w_word=$_POST['w_word'];
+        // print_r($w_word);
+        $hotword=new hotword;
+        //增加数据
+        $hotword->w_id='';
+        $hotword->w_word=$w_word;
+        //验证数据
+        $hotword->validate();
+        if($hotword->hasErrors()) {
+            echo "数据有误";
+            die;
+        }
+        $hotword->save();
+        return $this->redirect(['system/hotword']);//跳转至展示页面
+    }
+    ////////日志///////////////
+    public function actionMemberlog(){//展示会员日志
+        header("content-type:text/html;charset=utf-8");
+        $MembersLog=new MembersLog;//实例化
+        $log_username=isset($_GET['email'])?$_GET['email']:null;//做个人简历点击对应本人日志
+        if($getdata=$_GET){//做查询接值
+            //  print_r($getdata);die;
+            $where="1=1";//恒成立的
+            if(!empty($getdata['log_utype'])){//如果会员类型不为空
+                $log_utype=$getdata['log_utype'];
+                $where.=" and log_utype='$log_utype'";
+            }
+            if(!empty($getdata['settr'])){//做选择几天内
+                $settr=$getdata['settr'];//取到的天数
+                $new=time()-$settr*86400;//几天前
+                $where.=" and log_addtime>'$new'";
+            }
+            if(!empty($getdata['log_type'])){//如果日志类型不为空
+                $log_type=$getdata['log_type'];
+                $where.=" and log_type='$log_type'";
+            }
+//            if(!empty($log_username)){//如果有用户点击
+//                $where.=" and log_username='$log_username'";
+//            }
+            $query = $MembersLog::find()->where($where);//拿数据
+        };
+        //分页
+        if(empty($getdata)){//不查询接值
+            if(empty($log_username)){
+                $query = $MembersLog::find();//拿数据
+            }else{//如果有用户点击
+                $query = $MembersLog::find()->where("log_username='$log_username'");//拿数据
+            }
+
+        }
+        $pages = new Pagination([
+            'totalCount' => $query->count(),
+            'pageSize'   => 2   //每页显示条数
+        ]);
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        return $this->render('memberlog.html', [
+            'models' => $models,
+            'pages' => $pages,
+        ]);
+    }
+    public function actionMembersdel(){//会员日志批删
+        $id=\yii::$app->request->get('id');
+        $sql="delete from qs_members_log where log_id in ($id)";
+        $a= \Yii::$app->db->createCommand($sql)->execute();
+        if($a){
+            echo "成功";
+            return $this->redirect(['system/memberlog']);
+        }else{
+            echo "删出失败";
+        }
+    }
+     //网站管理员
+    public function actionManage(){
+
+
+        $Admin=new Admin();//实例化
+        //分页
+        $query = $Admin::find();//拿数据
+        $pages = new Pagination([
+            'totalCount' => $query->count(),
+            'pageSize'   => 5   //每页显示条数
+        ]);
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        return $this->render('manage_list.html', [
+            'models' => $models,
+            'pages' => $pages,
+        ]);
+    }
+     public function actionManageadd(){
+        return $this->renderPartial('manage_add.html');
+    }
+    //管理员入库操作
+    public function actionManagedb(){
+        $admin_name=isset($_POST['admin_name'])?$_POST['admin_name']:"";
+        $email=isset($_POST['email'])?$_POST['email']:"";
+        $pwd=md5(isset($_POST['pwd'])?$_POST['pwd']:"");
+        $rank=isset($_POST['rank'])?$_POST['rank']:"";
+        $admin=new Admin();
+        $admin->admin_name=$admin_name;
+        $admin->email=$email;
+        $admin->pwd=$pwd;
+        $admin->rank=$rank;
+        if($admin->hasErrors()){
+            echo 'data is error!';
+            die;
+        }
+        $admin->save();
+        return $this->redirect(['system/manage']);//跳转至展示页面
+    }
+     //管理员删除
+    public function actionManage_del(){
+        $admin_id=$_POST['admin_id'];
+        $customer = Admin::findOne($admin_id);
+        $customer->delete();
+        if($customer){
+            echo 1;
+        }else{
+            echo 0;
+        }
+    }
+    //管理员密码修改表单页
+    public function actionManage_update(){
+
+        $admin_id=$_GET['id'];
+        return $this->renderPartial('manage_update.html',['admin_id'=>$admin_id]);
+    }
+    //旧密码验证
+    public function actionManage_orpwd(){
+        $admin_id=$_POST['admin_id'];
+        $admin_pwd=$_POST['admin_pwd'];
+        $pwd = md5($admin_pwd);
+        $sql="select pwd from qs_admin where admin_id=:id";
+        $result= Admin::findBySql($sql,array(':id'=>$admin_id))->asArray()->all();
+//        print_r($result);
+        $pwd2=$result[0]['pwd'];
+        if($pwd==$pwd2){
+            echo 1;
+        }else{
+            echo 0;
+        }
+    }
+    //管理密码修改操作
+    public function actionManage_save(){
+//        print_r($_POST);die;
+        $admin_id=$_POST['admin_id'];
+        $pwd=md5($_POST['pwd_c']);
+        $admin_pwd=Admin::find()->where(['admin_id'=>$admin_id])->one();
+        $admin_pwd->pwd=$pwd;
+        $admin_pwd->save();
+        return $this->redirect(['system/manage']);
+    }
+    //excel数据导出
+    public function actionExcel_out(){
+        $arr=Job::find()->asArray()->all();
+        //获取要导出的数据
+        $objPHPExcel=new \PHPExcel;
+        // 实例化excel类
+         $objPHPExcel->getProperties()
+            ->setCreator('http://www.jb51.net')
+            ->setLastModifiedBy('http://www.jb51.net')
+            ->setTitle('Office 2007 XLSX Document')
+            ->setSubject('Office 2007 XLSX Document')
+            ->setDescription('Document for Office 2007 XLSX, generated using PHP classes.')
+            ->setKeywords('office 2007 openxml php')
+            ->setCategory('Result file');
+         //设置参数   
+        $objPHPExcel->setActiveSheetIndex(0)
+            ->setCellValue('A1','ID')
+            ->setCellValue('B1','职位名称')
+            ->setCellValue('C1','排序');
+            //设置表头
+        $i=2;
+        foreach($arr as $k=>$v){
+            $objPHPExcel->setActiveSheetIndex(0)
+                ->setCellValue('A'.$i,$v['id'])
+                ->setCellValue('B'.$i,$v['categoryname'])
+                ->setCellValue('C'.$i,$v['category_order']);
+            $i++;
+        }
+         //循环输出数据库中的信息  并放到对应的单元格中
+        $objPHPExcel->getActiveSheet()->setTitle('招聘');
+        //标题名称
+        $objPHPExcel->setActiveSheetIndex(0);
+        $filename=urldecode('职位列表').'_'.date('Y-m-dHis');
+        //文件名称
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="'.$filename.'.xls"');
+        // 生成xls文件
+        header('Cache-Control: max-age=0');
+        $objWriter=\PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel5');   
+        //若要生成xlsx文件   则要改为Excel2007
+        $objWriter->save('php://output');
+        return $this->redirect(['system/type']);
+        // exit;
+    }
 	
 }
 

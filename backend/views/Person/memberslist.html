@@ -1,0 +1,118 @@
+<?php
+use yii\helpers\Url;
+use yii\widgets\LinkPager;
+use yii\widgets\ActiveForm;
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>会员列表</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/content.css" />
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $('.all').click(function(){//全反选
+                if($('.all').prop("checked"))
+                {
+                    $('.xuan').prop("checked",true);
+                }
+                else
+                {
+                    $('.xuan').prop("checked",false);
+                }
+
+            })
+            $('#button').click(function(){//批删
+                var xuan=$('.xuan');//找到会员值
+                var str='';
+                for(var i=0;i<=xuan.length;i++){
+                    if(xuan.eq(i).prop("checked")){
+                        str+=','+xuan.eq(i).val();
+                    }
+                }
+                str= str.substr(1);
+                // alert(str)
+                location.href="?r=person/membersdel&id="+str;//传递参数
+            })
+        })
+    </script>
+</head>
+<body marginwidth="0" marginheight="0">
+<div class="container">
+    <div class="public-nav">您当前的位置：<a href="">后台</a>><a href="">个人</a>><a href="">会员列表</a></div>
+    <div class="public-content">
+        <div class="public-content-header">
+            <h3>会员列表</h3>
+        </div>
+        <div class="public-content-cont">
+                <?php $form = ActiveForm::begin([
+	                 'action' => ['person/memberslist'],
+                'method'=>'get',
+                ]); ?>
+                <table>
+                    <tr><td>邮箱验证：<br>
+                        <select name="email_audit">
+                            <option value="">不限</option>
+                            <option value="1">邮箱已验证</option>
+                            <option value="0">邮箱未验证</option>
+                        </select></td>
+                        <td>手机验证：<br>
+                            <select name="mobile_audit">
+                                <option value="">不限</option>
+                                <option value="1">手机已验证</option>
+                                <option value="0">手机未验证</option>
+                            </select></td>
+                        <td>注册时间：<br>
+                            <select name="settr">
+                                <option value="">不限</option>
+                                <option value="3">三天内</option>
+                                <option value="7">一周内</option>
+                                <option value="30">一月内</option>
+                                <option value="180">半年内</option>
+                                <option value="360">一年内</option>
+                            </select></td>
+                        <td><input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
+                            请点击查看<input type="submit" value="查看"></td></tr>
+                </table>
+            <?php ActiveForm::end(); ?>
+                <table class="public-cont-table">
+                    <tr>
+                        <th style="width:20%"><input type="checkbox" class="all">    用户名</th>
+                        <th style="width:17%">邮箱</th>
+                        <th style="width:13%">手机</th>
+                        <th style="width:10%">注册时间</th>
+                        <th style="width:10%">注册ip</th>
+                        <th style="width:10%">最后登录时间</th>
+                        <th style="width:20%">操作</th>
+                    </tr>
+                    <?php foreach($models as $key=>$val){?>
+                    <tr>
+                        <td><input type="checkbox" class="xuan" value="<?php echo $val['uid']?>">    <?php echo $val['username']?></td>
+                        <td><?php echo $val['email']?></td>
+                        <td><?php echo $val['mobile']?></td>
+                        <td><?php echo date('Y-m-d',$val['reg_time'])?></td>
+                        <td><?php echo $val['reg_ip']?></td>
+                        <td><?php echo date('Y-m-d',$val['last_login_time'])?></td>
+                        <td>
+                            <div class="table-fun">
+                                <a href="<?= Url::to(['person/membersedit','id'=>$val['uid']])?>">修改</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php }?>
+                </table>
+                <input type="button" value="删除会员" id="button"><a href="<?= Url::to(['person/membersadd'])?>">添加会员</a>
+                <div class="page">
+                    <!--分页-->
+                    <?php echo LinkPager::widget([
+            'pagination' => $pages,
+                    ]);?>
+
+                </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
