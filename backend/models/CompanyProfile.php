@@ -74,7 +74,7 @@ class CompanyProfile extends \yii\db\ActiveRecord
             [['uid', 'nature', 'trade', 'district', 'sdistrict', 'street', 'scale', 'audit', 'map_open', 'map_zoom', 'add_time', 'refreshtime', 'click', 'user_status', 'yellowpages', 'contact_show', 'telephone_show', 'address_show', 'email_show', 'robot', 'resume_processing', 'wzp_tpl'], 'integer'],
             [['contents'], 'string'],
             [['tpl', 'companyname', 'tag'], 'string', 'max' => 60],
-            [['nature_cn', 'trade_cn', 'scale_cn', 'logo'], 'string', 'max' => 30],
+            [['nature_cn', 'trade_cn', 'scale_cn', 'logo'], 'string', 'max' => 100],
             [['district_cn', 'contact', 'email', 'website'], 'string', 'max' => 100],
             [['street_cn', 'landline_tel', 'map_x', 'map_y'], 'string', 'max' => 50],
             [['registered'], 'string', 'max' => 150],

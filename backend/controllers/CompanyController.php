@@ -229,10 +229,10 @@ class CompanyController extends MyController
 		// $email['email'] = $email;
 		// echo $id;die;
 		$model = new CompanyProfile;
-		$info = $model::find()->where(['id'=>$id])->one();
-
+		$info = $model::find()->where(['c_id'=>$id])->one();
 		$info->email=$email;
 		// $info->setAttributes($data);
+		
 		if($info->save())
 		{
 			echo 1;

@@ -18,7 +18,7 @@ class MyController extends Controller
 		//禁用csrf   yii  ajax  400
 		$this->enableCsrfValidation = false;
 		$this->actionCheck_login();
-		// $this->actionRbac();
+		$this->actionRbac();
 	}
 
 	//防非法登陆
